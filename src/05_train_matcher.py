@@ -39,8 +39,8 @@ np.random.seed(SEED)
 SCRIPT_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = SCRIPT_DIR.parent if SCRIPT_DIR.name == "src" else SCRIPT_DIR
 
-DATA_DIR = os.environ.get("DATA_DIR", str(PROJECT_ROOT / "data"))
-OUTPUT_DIR = os.environ.get("OUTPUT_DIR", str(PROJECT_ROOT / "outputs" / "model"))
+DATA_DIR = os.environ.get("SM_CHANNEL_TRAIN", os.environ.get("DATA_DIR", str(PROJECT_ROOT / "data")))
+OUTPUT_DIR = os.environ.get("SM_MODEL_DIR", os.environ.get("OUTPUT_DIR", str(PROJECT_ROOT / "outputs" / "model")))
 
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
