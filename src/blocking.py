@@ -7,16 +7,21 @@ from collections import defaultdict
 # ------------------------------------------------------------
 def create_block_keys(df):
     d = {}
-    d["name_exact"] = df["country"].astype(str) + "|" + df["name_norm"].astype(str)
-    d["name_core"] = df["country"].astype(str) + "|" + df["name_core"].astype(str)
-    d["postal_name4"] = df["country"].astype(str) + "|" + df["postal"].astype(str) + "|" + df["name_prefix4"].astype(str)
-    d["postal_name6"] = df["country"].astype(str) + "|" + df["postal"].astype(str) + "|" + df["name_prefix6"].astype(str)
-    d["postal_first"] = df["country"].astype(str) + "|" + df["postal"].astype(str) + "|" + df["name_first"].astype(str)
-    d["first_last"] = df["country"].astype(str) + "|" + df["name_first"].astype(str) + "|" + df["name_last"].astype(str)
-    d["number_first"] = df["country"].astype(str) + "|" + df["numbers"].astype(str) + "|" + df["name_first"].astype(str)
-    d["number_name4"] = df["country"].astype(str) + "|" + df["numbers"].astype(str) + "|" + df["name_prefix4"].astype(str)
+    country = df["country"].fillna("").astype(str).str.strip().str.upper()
+    d["name_exact"] = country + "|" + df["name_norm"].astype(str)
+    d["name_core"] = country + "|" + df["name_core"].astype(str)
+    d["postal_name4"] = country + "|" + df["postal"].astype(str) + "|" + df["name_prefix4"].astype(str)
+    d["postal_name6"] = country + "|" + df["postal"].astype(str) + "|" + df["name_prefix6"].astype(str)
+    d["postal_first"] = country + "|" + df["postal"].astype(str) + "|" + df["name_first"].astype(str)
+    d["first_last"] = country + "|" + df["name_first"].astype(str) + "|" + df["name_last"].astype(str)
+    d["number_first"] = country + "|" + df["numbers"].astype(str) + "|" + df["name_first"].astype(str)
+    d["number_name4"] = country + "|" + df["numbers"].astype(str) + "|" + df["name_prefix4"].astype(str)
     
-    return pd.DataFrame(d)
+    block_df = pd.DataFrame(d)
+    for col in block_df.columns:
+        block_df.loc[block_df[col].str.endswith("|"), col] = ""
+        block_df.loc[block_df[col].isin(["", "|", "||"]), col] = ""
+    return block_df
 
 # ------------------------------------------------------------
 # 2. Block Quality Analysis
