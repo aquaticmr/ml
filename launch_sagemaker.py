@@ -22,7 +22,7 @@ s3_data_path = 's3://your-bucket-name/student_resource/'
 
 # Specify your GitHub repository here
 git_config = {
-    'repo': 'https://github.com/your-username/your-repo-name.git',
+    'repo': 'https://github.com/aquaticmr/ml.git',
     'branch': 'main'
 }
 
