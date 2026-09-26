@@ -1,0 +1,16 @@
+{
+    "s1_records": 2206821,
+    "s2_records": 5034616,
+    "s3_records": 5285603,
+    "total_source_records": 12527040,
+    "ground_truth_records": 2206821,
+    "s1_singletons": 123247,
+    "s1_with_matches": 2083574,
+    "singleton_percentage": 5.584820880352326,
+    "mean_matches_per_s1": 3.4612526344456573,
+    "median_matches_per_s1": 3.0,
+    "max_matches_per_s1": 11,
+    "s2_only_entities": 143029,
+    "s3_only_entities": 164498,
+    "both_sources_entities": 1776047
+}

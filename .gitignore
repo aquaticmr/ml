@@ -1,0 +1,6 @@
+.idea
+anaconda_projects
+__MACOSX
+student_resource
+outputs/blocking_keys
+*.parquet

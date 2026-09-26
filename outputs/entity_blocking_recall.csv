@@ -1,0 +1,6 @@
+rule,non_singleton_entities,fully_recovered_entities,full_entity_recall
+block_postal_name4,2083574,936531.0,44.94829557289542
+block_name_prefix6,2083574,875850.0,42.03594400774823
+block_name_exact,2083574,214025.0,10.272013377014687
+block_token_pair,2083574,415068.0,19.920962730385387
+block_postal,2083574,57324.0,2.7512341774278237
